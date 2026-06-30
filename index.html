@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5e Character Forge (SPA)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <h1>Character Forge</h1>
+        <div class="nav-links">
+            <a href="#race" class="nav-btn active" data-target="view-race">1. Race</a>
+            <a href="#class" class="nav-btn" data-target="view-class">2. Class</a>
+            <a href="#abilities" class="nav-btn" data-target="view-abilities">3. Abilities</a>
+            <a href="#sheet" class="nav-btn" data-target="view-sheet">4. Final Sheet</a>
+        </div>
+    </nav>
+
+    <main id="app-container" class="container">
+        
+        <section id="view-race" class="view active">
+            <h2>Select Your Race</h2>
+            <select id="raceSelect" class="data-select">
+                <option value="">Loading 5etools Races...</option>
+            </select>
+            <div id="raceDetails" class="details-panel">
+                </div>
+            <button class="next-btn" onclick="window.location.hash = '#class'">Next: Class &rarr;</button>
+        </section>
+
+        <section id="view-class" class="view">
+            <h2>Select Your Class</h2>
+            <select id="classSelect" class="data-select">
+                <option value="">Loading 5etools Classes...</option>
+            </select>
+            <div id="classOptionsContainer" class="details-panel" style="display: none;">
+                <label>Subclass:</label>
+                <select id="subclassSelect"><option value="">-- Base Class --</option></select>
+            </div>
+            <div class="nav-actions">
+                <button class="back-btn" onclick="window.location.hash = '#race'">&larr; Back</button>
+                <button class="next-btn" onclick="window.location.hash = '#abilities'">Next: Abilities &rarr;</button>
+            </div>
+        </section>
+
+        <section id="view-abilities" class="view">
+            <h2>Generate Ability Scores</h2>
+            
+            <div class="stat-assign-grid">
+                <div class="stat-col"><label>STR</label><input type="number" id="input-str" value="10" min="3" max="20"></div>
+                <div class="stat-col"><label>DEX</label><input type="number" id="input-dex" value="10" min="3" max="20"></div>
+                <div class="stat-col"><label>CON</label><input type="number" id="input-con" value="10" min="3" max="20"></div>
+                <div class="stat-col"><label>INT</label><input type="number" id="input-int" value="10" min="3" max="20"></div>
+                <div class="stat-col"><label>WIS</label><input type="number" id="input-wis" value="10" min="3" max="20"></div>
+                <div class="stat-col"><label>CHA</label><input type="number" id="input-cha" value="10" min="3" max="20"></div>
+            </div>
+
+            <div id="allRollGroups" class="dice-group-container">
+                </div>
+
+            <div class="nav-actions">
+                <button class="back-btn" onclick="window.location.hash = '#class'">&larr; Back</button>
+                <button class="next-btn" id="generateBtn" onclick="window.location.hash = '#sheet'">Generate Sheet &rarr;</button>
+            </div>
+        </section>
+
+        <section id="view-sheet" class="view">
+            <div class="header-action">
+                <h2>Your Character</h2>
+                <button id="exportPdfBtn" class="btn-pdf">Export to Official PDF</button>
+            </div>
+            
+            <div id="characterSheetOutput" class="sheet-display">
+                <h1 id="charName">Nameless Hero</h1>
+                <p><span id="charRace"></span> <span id="charClass"></span></p>
+                </div>
+            <button class="back-btn" style="margin-top:20px;" onclick="window.location.hash = '#abilities'">&larr; Edit Abilities</button>
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/pdf-lib@1.17.1"></script>
+    <script src="app.js"></script>
+</body>
+</html>

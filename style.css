@@ -1,0 +1,84 @@
+:root {
+    --primary: #d32f2f;
+    --bg-color: #f4f4f9;
+    --nav-bg: #222;
+    --text-main: #333;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-main);
+}
+
+/* SPA Navigation */
+.top-nav {
+    background: var(--nav-bg);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.top-nav h1 { margin: 0; font-size: 20px; }
+
+.nav-links { display: flex; gap: 10px; }
+
+.nav-btn {
+    color: #aaa;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.nav-btn:hover { color: white; background: rgba(255,255,255,0.1); }
+.nav-btn.active { color: white; background: var(--primary); }
+
+/* Main Container & Routing Logic */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* CRITICAL: Hides all views by default, only shows the one with .active */
+.view { display: none; animation: fadeIn 0.3s ease; }
+.view.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Elements */
+.data-select {
+    width: 100%; padding: 15px; font-size: 16px; 
+    border: 1px solid #ccc; border-radius: 4px; margin-bottom: 20px;
+}
+
+.details-panel {
+    background: #fafafa; border: 1px solid #eee;
+    padding: 20px; border-radius: 4px; margin-bottom: 20px;
+}
+
+.nav-actions {
+    display: flex; justify-content: space-between; margin-top: 30px;
+}
+
+button {
+    padding: 12px 24px; font-size: 16px; border: none; 
+    border-radius: 4px; cursor: pointer; font-weight: bold;
+}
+
+.next-btn { background: #4caf50; color: white; }
+.back-btn { background: #757575; color: white; }
+.btn-pdf { background: var(--primary); color: white; }
